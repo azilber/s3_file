@@ -26,7 +26,7 @@ module S3FileLib
     now, auth_string = get_s3_auth("HEAD", bucket,path,aws_access_key_id,aws_secret_access_key, token)
     
     headers = build_headers(now, auth_string, token)
-    response = RestClient.head('https://%s.s3.amazonaws.com%s' % [bucket,path], headers)
+    response = RestClient.head('https://s3.amazonaws.com/%s%s' % [bucket,path], headers)
     
     etag = response.headers[:etag].gsub('"','')
     digest = response.headers[:x_amz_meta_digest]
