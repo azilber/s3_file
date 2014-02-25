@@ -40,7 +40,7 @@ module S3FileLib
     
     headers = build_headers(now, auth_string, token)
 #    response = RestClient.get('https://%s.s3.amazonaws.com%s' % [bucket,path], headers)
-    response = RestClient::Request.execute(:method => :get, :url => 'https://%s.s3.amazonaws.com%s' % [bucket,path], :raw_response => true, :headers => headers)
+    response = RestClient::Request.execute(:method => :get, :url => 'https://s3.amazonaws.com%s%s' % [bucket,path], :raw_response => true, :headers => headers)
 
     return response
   end
